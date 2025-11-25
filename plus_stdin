@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 import sys
 
-ans = 0.0
+ans = 0          # もともと0.0だったのを0に変更
 for line in sys.stdin:
-    ans += float(line)
+    try:
+        ans += int(line)      # まずは文字列を整数に
+    except:
+        ans += float(line)    # 失敗したら浮動小数として足す
 
 print(ans)
 
