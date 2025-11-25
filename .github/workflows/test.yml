@@ -1,14 +1,23 @@
-name: test          # ワークフローの名前
+name: test
 
-on: push            # push されたら動く
+on: push
 
 jobs:
   test:
-    runs-on: ubuntu-latest   # Ubuntu 上で実行
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
 
     steps:
-      - uses: actions/checkout@v3   # リポジトリをチェックアウト
+      - uses: actions/checkout@v3
 
-      - name: All test              # 好きな名前でOK
-        run: bash -xv ./test.bash   # さっき作ったテストスクリプトを実行
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: All test
+        run: bash -xv ./test.bash
 
