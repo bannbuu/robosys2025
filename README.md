@@ -22,4 +22,21 @@ seq 5 | ./plus
 # 改行区切りの数値を足し算
 echo -e "1\n2\n3" | ./plus
 # => 6
+## 必要なソフトウェア
+
+- Python 3  
+  - テスト済みバージョン: 3.8〜3.11
+
+## テスト環境
+
+- Ubuntu 22.04 LTS
+
+## ライセンス
+
+- このソフトウェアパッケージは、3 条項 BSD ライセンスの下で配布されています。  
+- © 2024 Yoshiaki Naruse  
+- 詳細は `LICENSE` ファイルを参照してください。  
+- 各スクリプトの先頭には、次の SPDX タグを記載しています：  
+  - `SPDX-FileCopyrightText: 2024 Yoshiaki Naruse`  
+  - `SPDX-License-Identifier: BSD-3-Clause`
 
