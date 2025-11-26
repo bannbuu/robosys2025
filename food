@@ -1,0 +1,89 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2025 Yoshiaki Naruse <zhengyit364@gmail.com>
+# SPDX-License-Identifier: BSD-3-Clause
+
+import sys
+
+
+def print_usage(prog: str) -> None:
+    print(f"使い方: {prog} <ジャンル1> <ジャンル2> <ジャンル3>")
+    print("  <ジャンル1>: 肉 / 魚 / 麺")
+    print("  <ジャンル2>: 例) 焼く, 煮る, 揚げる, 丼 など")
+    print("  <ジャンル3>: 例) 牛, 豚, 鳥 など")
+    print()
+    print(f"  例: {prog} 肉 焼く 牛")
+
+
+def choose_file(genre1: str) -> str:
+    if genre1 == "肉":
+        return "foods-肉.txt"
+    elif genre1 == "魚":
+        return "foods-魚.txt"
+    elif genre1 == "麺":
+        return "foods-麺.txt"
+    else:
+        return ""
+
+
+def main() -> int:
+    # ヘルプ
+    if len(sys.argv) == 2 and sys.argv[1] in ("-h", "--help"):
+        print_usage(sys.argv[0])
+        return 0
+
+    # 引数チェック
+    if len(sys.argv) != 4:
+        print("Error: 引数の数が違います。", file=sys.stderr)
+        print_usage(sys.argv[0])
+        return 1
+
+    genre1 = sys.argv[1]  # 肉 / 魚 / 麺
+    genre2 = sys.argv[2]  # 焼く / 煮る / 揚げる / 丼 など
+    genre3 = sys.argv[3]  # 牛 / 豚 / 鳥 など
+
+    filename = choose_file(genre1)
+    if filename == "":
+        print(f"Error: 未対応の大ジャンル '{genre1}'", file=sys.stderr)
+        return 2
+
+    try:
+        f = open(filename, encoding="utf-8")
+    except OSError:
+        print(f"Error: ファイル {filename} を開けませんでした。", file=sys.stderr)
+        return 3
+
+    found = False
+
+    # 行の形式: <肉の種類>,<調理法>:料理名
+    # 例: 牛,焼く:ステーキ
+    with f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+
+            try:
+                left, name = line.split(":", 1)
+                file_g3, file_g2 = left.split(",", 1)  # file_g3=牛, file_g2=焼く
+            except ValueError:
+                continue  # 変な行はスキップ
+
+            file_g2 = file_g2.strip()
+            file_g3 = file_g3.strip()
+            name = name.strip()
+
+            # 第2引数=調理法, 第3引数=肉の種類 と比較
+            if file_g2 == genre2 and file_g3 == genre3:
+                print(name)
+                found = True
+
+    if not found:
+        print(f"Error: {genre1}, {genre2}, {genre3} なし", file=sys.stderr)
+        return 4
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
