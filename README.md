@@ -93,7 +93,7 @@ GitHub Actions による自動テスト
 
 README の先頭にあるバッジは，これらのテスト結果を反映しています。
 
-必要なソフトウェア
+##必要なソフトウェア
 
 Python 3
 
@@ -103,7 +103,7 @@ Bash（test.bash の実行に使用）
 
 （テスト用）seq コマンドなど，基本的なコマンドラインツール
 
-テスト環境
+##テスト環境
 
 Ubuntu 22.04 LTS（GitHub Actions の ubuntu-latest 相当）
 
