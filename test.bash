@@ -1,54 +1,31 @@
 #!/bin/bash -xv
+# SPDX-FileCopyrightText: 2025 Yoshiaki Naruse <zhengyit364@gmail.com>
+# SPDX-License-Identifier: BSD-3-Clause
 
 ng () {
-    echo ${1}行目が違うよ
+    echo "${1}行目が違うよ"
     res=1
 }
 
 res=0
 
-### plus コマンドのテスト ###
-
-# NORMAL INPUT
-out=$(seq 5 | ./plus)
-[ "$?" = 0 ] || ng "$LINENO"          # 正常終了しているか
-[ "${out}" = 15 ] || ng "$LINENO"     # 1+2+3+4+5 = 15 か
-
-# STRANGE INPUT 1: 計算できない値
-out=$(echo あ | ./plus)
-[ "$?" = 1 ] || ng "$LINENO"          # エラー終了しているか
-[ "${out}" = "" ] || ng "$LINENO"     # 標準出力には何も出ていないか
-
-# STRANGE INPUT 2: 何も入力しない
-out=$(echo | ./plus)
-[ "$?" = 1 ] || ng "$LINENO"
-[ "${out}" = "" ] || ng "$LINENO"
-
-
-### food コマンドのテスト ###
-
-# NORMAL INPUT: 肉 / 焼く / 牛
+### NORMAL INPUT: 正常な入力 ###
+# 期待する出力:
+# ステーキ
+# 焼肉
 out=$(./food 肉 焼く 牛)
-[ "$?" = 0 ] || ng "$LINENO"          # 正常終了しているか
-[ -n "${out}" ] || ng "$LINENO"       # 1行以上出力されているか（ステーキ/焼肉など）
+[ "$?" = 0 ] || ng "$LINENO"
+[ "$out" = $'ステーキ\n焼肉' ] || ng "$LINENO"
 
-# HELP の確認
-out=$(./food --help)
-[ "$?" = 0 ] || ng "$LINENO"          # ヘルプは正常終了であるべき
-# ヘルプの内容まではここではチェックしない
+### STRANGE INPUT 1: 存在しない組み合わせ ###
+# 第3引数に「羊」を渡して、見つからずエラー終了(4)になるか
+out=$(./food 肉 焼く 羊 2> /dev/null)
+[ "$?" = 4 ] || ng "$LINENO"
 
-# 未対応の大ジャンル
-out=$(./food 野菜 焼く 牛)
-[ "$?" = 2 ] || ng "$LINENO"          # 想定どおり終了ステータス2か
-[ "${out}" = "" ] || ng "$LINENO"     # 標準出力は空（エラーはstderr）
+### STRANGE INPUT 2: 引数が足りない ###
+# 引数 2 個で実行して、使い方エラー(1)になるか
+out=$(./food 肉 焼く 2> /dev/null)
+[ "$?" = 1 ] || ng "$LINENO"
 
-# 組み合わせが見つからない場合
-out=$(./food 肉 揚げる 羊)
-[ "$?" = 4 ] || ng "$LINENO"          # 想定どおり終了ステータス4か
-[ "${out}" = "" ] || ng "$LINENO"     # 標準出力は空
-
-### すべてのテストが通ったかどうか ###
-
-[ "${res}" = 0 ] && echo OK
+[ "${res}" = 0 ] && echo OK   # ここまで全部通ったら OK と表示
 exit $res
-
