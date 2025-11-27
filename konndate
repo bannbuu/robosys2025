@@ -26,8 +26,18 @@ elif genre1 == "麺":
     filename = "foods-麺.txt"
 else:
     print(f"Error: 未対応のジャンル1 '{genre1}'", file=sys.stderr)
-    sys.exit(2)
+    sys.exit(1)
 
 print("A:", genre1, "→", filename)
-sys.exit(1)
+sys.exit(2)
+
+try:
+    f = open(filename, encoding="utf-8")
+except OSError:
+    print(f"Error: ファイル {filename} を開けませんでした。", file=sys.stderr)
+    sys.exit(3)
+
+print("DEBUG: opened", filename)
+f.close()
+sys.exit(4)
 
