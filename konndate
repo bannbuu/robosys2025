@@ -41,3 +41,23 @@ print("DEBUG: opened", filename)
 f.close()
 sys.exit(4)
 
+found = False
+
+for line in f:
+    line = line.strip()
+    if not line or line.startswith("#"):
+        continue
+
+    try:
+        left, name = line.split(":", 1)
+        file_g3, file_g2 = left.split(",", 1)
+    except ValueError:
+        continue
+
+    file_g2 = file_g2.strip()
+    file_g3 = file_g3.strip()
+    name = name.strip()
+
+    # print("A:", file_g3, file_g2, "→", name)
+f.close()
+sys.exit(5)
