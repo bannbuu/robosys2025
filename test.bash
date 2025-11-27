@@ -9,10 +9,11 @@ ng () {
 
 res=0
 
-out=$(./food 肉 焼く 牛)
+out=$(./konndate 肉 焼く 牛)
 [ "$?" = 0 ] || ng "$LINENO"
 [ "$out" = $'ステーキ\n焼肉' ] || ng "$LINENO"
 
 [ "${res}" = 0 ] && echo OK
 exit $res
+
 
