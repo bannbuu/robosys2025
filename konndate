@@ -12,4 +12,22 @@ if len(sys.argv) != 4:
     print("  <ジャンル3>: 例) 牛, 豚, 鳥 など")
     print()
     print(f"  例: {prog} 肉 焼く 牛")
-    sys.exit(0)                      
+    sys.exit(0)
+
+genre1 = sys.argv[1]
+genre2 = sys.argv[2]
+genre3 = sys.argv[3]
+
+if genre1 == "肉":
+    filename = "foods-肉.txt"
+elif genre1 == "魚":
+    filename = "foods-魚.txt"
+elif genre1 == "麺":
+    filename = "foods-麺.txt"
+else:
+    print(f"Error: 未対応のジャンル1 '{genre1}'", file=sys.stderr)
+    sys.exit(2)
+
+print("A:", genre1, "→", filename)
+sys.exit(1)
+
