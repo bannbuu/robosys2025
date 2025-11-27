@@ -61,3 +61,16 @@ for line in f:
     # print("A:", file_g3, file_g2, "→", name)
 f.close()
 sys.exit(5)
+
+if file_g2 == genre2 and file_g3 == genre3:
+    print(name)
+    found = True
+
+f.close()
+
+if not found:
+    print(f"Error: {genre1}, {genre2}, {genre3} なし", file=sys.stderr)
+    sys.exit(6)
+
+sys.exit(7)
+
