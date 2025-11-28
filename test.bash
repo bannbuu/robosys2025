@@ -89,6 +89,10 @@ out=$(./konndate 麺 汁なし アジア)
 [ "$?" = 0 ] || ng "$LINENO"
 [ "$out" = "パッタイ" ] || ng "$LINENO"
 
+out=$(./konndate -h)
+[ "$?" = 0 ] || ng "$LINENO"
+echo "$out" | grep -q "使い方" || ng "$LINENO"
+
 [ "${res}" = 0 ] && echo OK
 exit $res
 
