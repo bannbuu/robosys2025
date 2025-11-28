@@ -22,3 +22,12 @@
 ./konndate 魚 丼 赤身
 ./konndate 麺 汁なし 中華
 
+### 必要なソフトウェア
+
+- Python
+  - テスト済みバージョン: 3.8, 3.9, 3.10, 3.11
+
+### テスト環境
+
+- Ubuntu 24.04 LTS（GitHub Actions の `ubuntu-latest` 上で確認）
+
