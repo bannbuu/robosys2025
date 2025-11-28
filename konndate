@@ -36,7 +36,7 @@ elif genre1 == "魚":
 elif genre1 == "麺":
     filename = "foods-麺.txt"
 else:
-    print(f"Error: 未対応の大ジャンル '{genre1}'", file=sys.stderr)
+    print(f"Error: 未対応のジャンル1 '{genre1}'", file=sys.stderr)
     sys.exit(2)
 
 try:
