@@ -21,6 +21,10 @@ out=$(./konndate 肉 丼 豚)
 [ "$?" = 0 ] || ng "$LINENO"
 [ "$out" = $'ソースカツ丼\nかつ丼\n味噌カツ丼' ] || ng "$LINENO"
 
+out=$(./konndate 肉 揚げる 鳥)
+[ "$?" = 0 ] || ng "$LINENO"
+[ "$out" = $'鳥のから揚げ\nチキン南蛮\nフライドチキン' ] || ng "$LINENO"
+
 [ "${res}" = 0 ] && echo OK
 exit $res
 
