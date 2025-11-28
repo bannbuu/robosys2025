@@ -69,6 +69,10 @@ out=$(./konndate 麺 中華 冷たい)
 [ "$?" = 0 ] || ng "$LINENO"
 [ "$out" = "冷やし中華" ] || ng "$LINENO"
 
+out=$(./konndate 麺 トマト パスタ)
+[ "$?" = 0 ] || ng "$LINENO"
+[ "$out" = $'ナポリタン\nアラビアータ' ] || ng "$LINENO"
+
 [ "${res}" = 0 ] && echo OK
 exit $res
 
