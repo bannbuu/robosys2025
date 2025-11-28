@@ -17,5 +17,8 @@ konndateは､料理のジャンル・調理法・食材を指定すると、対
 
 ## 使用例
 ./konndate 肉 焼く 牛
+
 ./konndate 魚 丼 赤身
+
 ./konndate 麺 汁なし 中華
+
