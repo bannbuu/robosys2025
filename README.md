@@ -79,3 +79,5 @@ foods-麺.txt
 ./konndate --help
 
 このときの終了ステータスは 0 です。
+
+## テスト
