@@ -107,4 +107,8 @@ python -m py_compile konndate による構文チェック
 を行っています。
 
 ## ライセンス
+このリポジトリのソフトウェアは BSD-3-Clause ライセンスで配布しています。
 
+詳細は LICENSE ファイルを参照してください。
+
+© 2025 Yoshiaki Naruse
