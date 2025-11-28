@@ -105,3 +105,6 @@ python -m py_compile konndate による構文チェック
 ./test.bash による動作確認
 
 を行っています。
+
+## ライセンス
+
