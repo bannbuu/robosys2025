@@ -102,6 +102,9 @@ out=$(./konndate 野菜 焼く 牛 2> /dev/null)
 out=$(./konndate 肉 焼く 2> /dev/null)
 [ "$?" = 1 ] || ng "$LINENO"
 
+out=$(./konndate 肉 焼く 牛 余計 2> /dev/null)
+[ "$?" = 1 ] || ng "$LINENO"
+
 [ "${res}" = 0 ] && echo OK
 exit $res
 
