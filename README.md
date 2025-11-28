@@ -21,7 +21,7 @@
 ./konndate 肉 焼く 牛
 ./konndate 魚 丼 赤身
 ./konndate 麺 汁なし 中華
-'''bash
+' ''' '
 
 ### 必要なソフトウェア
 
