@@ -96,6 +96,9 @@ echo "$out" | grep -q "使い方" || ng "$LINENO"
 out=$(./konndate 肉 焼く 羊 2> /dev/null)
 [ "$?" = 4 ] || ng "$LINENO"
 
+out=$(./konndate 野菜 焼く 牛 2> /dev/null)
+[ "$?" = 2 ] || ng "$LINENO"
+
 [ "${res}" = 0 ] && echo OK
 exit $res
 
