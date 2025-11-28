@@ -93,6 +93,9 @@ out=$(./konndate -h)
 [ "$?" = 0 ] || ng "$LINENO"
 echo "$out" | grep -q "使い方" || ng "$LINENO"
 
+out=$(./konndate 肉 焼く 羊 2> /dev/null)
+[ "$?" = 4 ] || ng "$LINENO"
+
 [ "${res}" = 0 ] && echo OK
 exit $res
 
