@@ -96,3 +96,12 @@ konndate の動作は test.bash で自動テストしています。
 引数不足・引数が多すぎる場合に終了コード 1 になること
 
 ## GitHub Actions による自動テスト
+このリポジトリでは GitHub Actions を使って、main ブランチへの push や pull request ごとに konndate のテストを自動実行しています。
+
+ワークフローファイルは .github/workflows/test.yml です。Python 3.8 / 3.9 / 3.10 / 3.11 の環境で
+
+python -m py_compile konndate による構文チェック
+
+./test.bash による動作確認
+
+を行っています。
