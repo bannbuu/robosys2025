@@ -8,7 +8,7 @@ konndateは､料理のジャンル・調理法・食材を指定すると、対
 
 ## ダウンロード・インストール
 
-### `手順`
+### `手順
 
 1. リポジトリを取得する  
    `$ git clone https://github.com/bannbuu/robosys2025.git`
@@ -20,7 +20,7 @@ konndateは､料理のジャンル・調理法・食材を指定すると、対
    `$ chmod +x konndate`    
 
 4. 実行する(例:肉料理･焼く･牛)  
-   `$ cat foods-肉.txt | ./konndate 肉 焼く 牛`
+   `$ cat foods-肉.txt | ./konndate 肉 焼く 牛``
 
 ## 使い方
 ### コマンドの書式
